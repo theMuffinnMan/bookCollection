@@ -28,7 +28,7 @@ public class Books
         scanner = new Scanner(System.in);
         
         //create books
-        Book b1 = new Book(1, "The Wicked King", "Holly Black", 12);
+        Book b1 = new Book(1, "The Wicked King", "Holly Black", 2);
         Book b2 = new Book(2, "Gideon the Ninth", "Tamsin Miur", 2);
         Book b3 = new Book(3, "Good Omens", "Terry Prachet", 6);
         
@@ -68,7 +68,17 @@ public class Books
      */
     public void addBook(String name, String author, int qty){
         this.setBookId();
-        library.put(currBookId, new Book(currBookId, name, author, qty));
+        library.put(this.currBookId, new Book(this.currBookId, name, author, qty));
+    }
+    
+    /** 
+     * add a book to the map and display the cover on canva
+     * Override the method with different param
+     * @ param name, author, qty, img
+     */
+    public void addBook(String name, String author, int qty, String img){
+        this.setBookId();
+        this.library.put(this.currBookId, new Book(this.currBookId, name, author, qty, img));
     }
     
     /**
@@ -82,6 +92,13 @@ public class Books
             + library.get(bookId).getQuantity());
         }
     }
+    
+    /**
+     * book getter
+     */
+    public Book getBook(){
+        return this.currBook;
+    }
     /**
      * Create a menu to pritn all and call appropriate methods
      * 
@@ -94,6 +111,7 @@ public class Books
             UI.println("(F)ind a book");
             UI.println("(P)rint all books");
             UI.println("(Q)uit");
+            UI.println("----------------------"); // makes menu easier to read when menu is called mulitple times
             
             choice = scanner.nextLine().trim().toUpperCase();
             
