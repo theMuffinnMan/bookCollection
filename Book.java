@@ -15,6 +15,13 @@ public class Book
     private String image;
     static final String DEFAULT_IMAGE = "book.jpg"; // set a defualt image
     private int likes = 0;
+    
+    private int locX = 100; //img x start pos
+    private int locY = 100; //img y start pos
+        
+    private final double WIDTH = 250;
+    private final double HEIGHT = 300;
+    
 
     /**
      * Constructor for objects of class Book
@@ -47,14 +54,27 @@ public class Book
      * Display image on GUI
      */
     public void displayBook(){
-        int locX = 100; //img x start pos
-        int locY = 100; //img y start pos
-        
-        final double WIDTH = 250;
-        final double HEIGHT = 300;
-        
         UI.drawImage(this.image, locX, locY, WIDTH, HEIGHT);
     }
+    
+    /**
+     * doMouse
+     * mouse interaction with book cover
+     */
+    public boolean doMouse(String action, double x, double y){
+        // returns true or false wether mouse clikced on book cover or not
+        
+        //mouse clicked on book cover
+        if (x > this.locX && x < this.locX + WIDTH
+        && y > this.locY && y < this.locY + HEIGHT){
+            return true;
+        }
+        //mouse did not click on book cover
+        else{
+            return false;
+        }
+    }
+    
     /**
      * getter for id number
      */
@@ -78,5 +98,17 @@ public class Book
      */
     public int getQuantity(){
         return this.quantity;
+    }
+    /**
+     * Getter for likes
+     */
+    public int getLikes(){
+        return this.likes;
+    }
+    /**
+     * Setter for likes
+     */
+    public void setLikes(){
+        this.likes += 1;
     }
 }

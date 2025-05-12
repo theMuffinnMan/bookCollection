@@ -98,6 +98,4 @@ public class Books
     public Book getBook(){
         return this.currBook;
     }
-    
-
 }
