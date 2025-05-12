@@ -14,6 +14,7 @@ public class Book
     private int quantity;
     private String image;
     static final String DEFAULT_IMAGE = "book.jpg"; // set a defualt image
+    private int likes = 0;
 
     /**
      * Constructor for objects of class Book

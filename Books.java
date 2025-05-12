@@ -16,7 +16,6 @@ public class Books
     private HashMap<Integer, Book> library; // declearing the hashmap
     private int currBookId; // store the current id number of hte book being added
     private Book currBook; // store the instance of hte current book
-    private Scanner scanner;
 
     /**
      * Constructor for objects of class Books
@@ -25,7 +24,7 @@ public class Books
     {
         //intitailse the fields
         library = new HashMap<Integer, Book>(); // initialise hashmap
-        scanner = new Scanner(System.in);
+    
         
         //create books
         Book b1 = new Book(1, "The Wicked King", "Holly Black", 2);
@@ -86,8 +85,8 @@ public class Books
      */
     public void printAll(){
         for(int bookId: library.keySet()){
-            System.out.println(bookId + " Details: ");
-            System.out.println(library.get(bookId).getName() + " "
+            UI.println(bookId + " Details: ");
+            UI.println(library.get(bookId).getName() + " "
             + library.get(bookId).getAuthor() + " "
             + library.get(bookId).getQuantity());
         }
@@ -99,67 +98,6 @@ public class Books
     public Book getBook(){
         return this.currBook;
     }
-    /**
-     * Create a menu to pritn all and call appropriate methods
-     * 
-     */
-        public void menu(){
-        // print menu and force choice
-        String choice;
-        do{
-            UI.println("(A)dd a book");
-            UI.println("(F)ind a book");
-            UI.println("(P)rint all books");
-            UI.println("(Q)uit");
-            UI.println("----------------------"); // makes menu easier to read when menu is called mulitple times
-            
-            choice = scanner.nextLine().trim().toUpperCase();
-            
-            switch(choice){
-                case "A":
-                    System.out.println("Enter Book title: ");
-                    String title = scanner.nextLine();
-                    System.out.println("Enter Book author: ");
-                    String author = scanner.nextLine();
-                    
-                    //check for existing books
-                    if(findBook(title)){
-                        System.out.println("A book with this title already exists");
-                        break;
-                    }
-                    System.out.println("Enter quantity: ");
-                    int qty = Integer.parseInt(scanner.nextLine());
-                    
-                    addBook(title, author, qty);
-                    System.out.println("Book added successully!");
-                    break;
-                    
-                case "F":
-                    System.out.println("Enter book title to find: ");
-                    String searchTitle = scanner.nextLine();
-                    
-                    if(findBook(searchTitle)){
-                        System.out.println("Book found");
-                        System.out.println(currBook);
-                    }
-                    else{
-                        System.out.println("Book not found");
-                    }
-                    break;
-                case "P":
-                    printAll();
-                    break;
-                    
-                case "Q":
-                    System.out.println("Goodbye!");
-                    break;
-                default:
-                    System.out.println("Invalid Choice");
-            }
-        }while(!choice.equalsIgnoreCase("Q"));
-        scanner.close();
-    }
-    public static void main(String[] args){
-        new Books().menu();
-    }
+    
+
 }
