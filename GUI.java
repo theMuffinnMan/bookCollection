@@ -4,8 +4,8 @@ import ecs100.*;
  * Allows add, print, find books on GUI
  * 
  * ??? delete
- * ??? click the book cover to like the book
- * ??? show the total number of likes
+ * click the book cover to like the book
+ * show the total number of likes
  *
  * @Fleur
  * @29/4
@@ -29,6 +29,7 @@ public class GUI
         UI.addButton("Print All",books::printAll);
         UI.addButton("Add", this::addBook);
         UI.addButton("Find", this::findBook);
+        UI.addButton("Delete Book", this::deleteBook);
         UI.addButton("Quit", UI::quit);
         UI.setMouseListener(this::doMouse);
         
@@ -88,6 +89,21 @@ public class GUI
             UI.println("Author: " + this.book.getAuthor());
             UI.println("Quantity: " + this.book.getQuantity());
             UI.println("Likes: " + this.book.getLikes());
+        }
+        else{
+            UI.println("That book does not exist!");
+        }
+    }
+    
+    /**
+     * delete book
+     */
+    public void deleteBook(){
+        String bookName = UI.askString("Name of Books: ");
+        if(this.books.findBook(bookName.toLowerCase().trim())){
+            books.deleteBook();
+            
+            UI.println("Book Deleted!");
         }
         else{
             UI.println("That book does not exist!");

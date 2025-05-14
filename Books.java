@@ -70,6 +70,14 @@ public class Books
         library.put(this.currBookId, new Book(this.currBookId, name, author, qty, like));
     }
     
+    /**
+     * Delete a book from the hashmap
+     */
+    public void deleteBook(){
+        
+        library.remove(currBookId);
+    }
+    
     /** 
      * add a book to the map and display the cover on canva
      * Override the method with different param
