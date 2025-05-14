@@ -27,9 +27,9 @@ public class Books
     
         
         //create books
-        Book b1 = new Book(1, "The Wicked King", "Holly Black", 2);
-        Book b2 = new Book(2, "Gideon the Ninth", "Tamsin Miur", 2);
-        Book b3 = new Book(3, "Good Omens", "Terry Prachet", 6);
+        Book b1 = new Book(1, "The Wicked King", "Holly Black", 2, 0);
+        Book b2 = new Book(2, "Gideon the Ninth", "Tamsin Miur", 2, 0);
+        Book b3 = new Book(3, "Good Omens", "Terry Prachet", 6, 0);
         
         // add books to collection
         library.put(1, b1);
@@ -65,9 +65,9 @@ public class Books
     /**
      * Add a book to the hashMap
      */
-    public void addBook(String name, String author, int qty){
+    public void addBook(String name, String author, int qty, int like){
         this.setBookId();
-        library.put(this.currBookId, new Book(this.currBookId, name, author, qty));
+        library.put(this.currBookId, new Book(this.currBookId, name, author, qty, like));
     }
     
     /** 
@@ -75,9 +75,9 @@ public class Books
      * Override the method with different param
      * @ param name, author, qty, img
      */
-    public void addBook(String name, String author, int qty, String img){
+    public void addBook(String name, String author, int qty, String img, int like){
         this.setBookId();
-        this.library.put(this.currBookId, new Book(this.currBookId, name, author, qty, img));
+        this.library.put(this.currBookId, new Book(this.currBookId, name, author, qty, img, like));
     }
     
     /**

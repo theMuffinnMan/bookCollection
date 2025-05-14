@@ -30,6 +30,7 @@ public class GUI
         UI.addButton("Add", this::addBook);
         UI.addButton("Find", this::findBook);
         UI.addButton("Quit", UI::quit);
+        UI.setMouseListener(this::doMouse);
         
     }
 
@@ -65,8 +66,11 @@ public class GUI
         //add a book image or display
         String imgFileName = UIFileChooser.open("Choose Image File: ");
         
+        //set likes to 0
+        int like = 0;
+        
         //add books with images
-        this.books.addBook(name, author, quantity, imgFileName);
+        this.books.addBook(name, author, quantity, imgFileName, like);
     }
     
     /**
@@ -90,10 +94,22 @@ public class GUI
     }
     
     /**
+     * doMouse
+     * mouse interaction with book cover
+     */
+    public void doMouse(String action, double x, double y){
+        // returns true or false wether mouse clikced on book cover or not
+        
+        //mouse clicked on book cover
+        if (action.equals("clicked")){
+            book.setLikes();
+        }
+    }
+    
+    /**
      * Main routine
      */
     public static void main(String[] args) {
         new GUI();
-        UI.setMouseListener(Book::doMouse);
     }
 }

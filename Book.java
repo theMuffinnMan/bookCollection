@@ -14,7 +14,7 @@ public class Book
     private int quantity;
     private String image;
     static final String DEFAULT_IMAGE = "book.jpg"; // set a defualt image
-    private int likes = 0;
+    private int like;
     
     private int locX = 100; //img x start pos
     private int locY = 100; //img y start pos
@@ -27,12 +27,13 @@ public class Book
      * Constructor for objects of class Book
      * overloaded???
      */
-    public Book(int key, String nm, String auth, int qty, String img)
+    public Book(int key, String nm, String auth, int qty, String img, int likes)
     {
         this.id = key;
         this.name = nm;
         this.author = auth;
         this.quantity = qty;
+        this.like = likes;
         if(img == null){
             this.image = DEFAULT_IMAGE; // add defualt img is user clicks cancel
         }
@@ -44,9 +45,9 @@ public class Book
     /**
      * Constructor for objects of class Book
      */
-    public Book(int key, String nm, String auth, int qty)
+    public Book(int key, String nm, String auth, int qty, int likes)
     {
-        this(key, nm, auth, qty, DEFAULT_IMAGE);
+        this(key, nm, auth, qty, DEFAULT_IMAGE, likes);
     }
 
     
@@ -61,7 +62,7 @@ public class Book
      * doMouse
      * mouse interaction with book cover
      */
-    public boolean doMouse(String action, double x, double y){
+    public boolean protodoMouse(String action, double x, double y){
         // returns true or false wether mouse clikced on book cover or not
         
         //mouse clicked on book cover
@@ -103,12 +104,12 @@ public class Book
      * Getter for likes
      */
     public int getLikes(){
-        return this.likes;
+        return this.like;
     }
     /**
      * Setter for likes
      */
     public void setLikes(){
-        this.likes += 1;
+        this.like += 1;
     }
 }
