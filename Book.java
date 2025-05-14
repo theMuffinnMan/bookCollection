@@ -16,8 +16,8 @@ public class Book
     static final String DEFAULT_IMAGE = "book.jpg"; // set a defualt image
     private int like;
     
-    private int locX = 100; //img x start pos
-    private int locY = 100; //img y start pos
+    private double locX = 100; //img x start pos
+    private double locY = 100; //img y start pos
         
     private final double WIDTH = 250;
     private final double HEIGHT = 300;
@@ -59,24 +59,6 @@ public class Book
     }
     
     /**
-     * doMouse
-     * mouse interaction with book cover
-     */
-    public boolean protodoMouse(String action, double x, double y){
-        // returns true or false wether mouse clikced on book cover or not
-        
-        //mouse clicked on book cover
-        if (x > this.locX && x < this.locX + WIDTH
-        && y > this.locY && y < this.locY + HEIGHT){
-            return true;
-        }
-        //mouse did not click on book cover
-        else{
-            return false;
-        }
-    }
-    
-    /**
      * getter for id number
      */
     public int getId(){
@@ -105,6 +87,30 @@ public class Book
      */
     public int getLikes(){
         return this.like;
+    }
+    /**
+     * Getter for locX - img starting pos x
+     */
+    public double getLocX(){
+        return this.locX;
+    }
+    /**
+     * Getter for locY - img starting pos y
+     */
+    public double getLocY(){
+        return this.locY;
+    }
+    /**
+     * Getter for width - img width
+     */
+    public double getWidth(){
+        return this.WIDTH;
+    }
+    /**
+     * Getter for height - img height
+     */
+    public double getHeight(){
+        return this.HEIGHT;
     }
     /**
      * Setter for likes

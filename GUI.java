@@ -87,10 +87,18 @@ public class GUI
             this.book.displayBook();
             UI.println("Author: " + this.book.getAuthor());
             UI.println("Quantity: " + this.book.getQuantity());
+            UI.println("Likes: " + this.book.getLikes());
         }
         else{
             UI.println("That book does not exist!");
         }
+    }
+    
+    /**
+     * Print book likes
+     */
+    public void printLikes(){
+        UI.println(book.getName() + " has " + book.getLikes() + " likes");
     }
     
     /**
@@ -101,8 +109,10 @@ public class GUI
         // returns true or false wether mouse clikced on book cover or not
         
         //mouse clicked on book cover
-        if (action.equals("clicked")){
+        if (action.equals("clicked") && x > book.getLocX() && x < book.getLocX() + book.getWidth()
+           && y > book.getLocY() && y < book.getLocY() + book.getHeight()){
             book.setLikes();
+            this.printLikes();
         }
     }
     

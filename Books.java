@@ -88,7 +88,8 @@ public class Books
             UI.println(bookId + " Details: ");
             UI.println(library.get(bookId).getName() + " "
             + library.get(bookId).getAuthor() + " "
-            + library.get(bookId).getQuantity());
+            + library.get(bookId).getQuantity() + " "
+            + library.get(bookId).getLikes());
         }
     }
     
